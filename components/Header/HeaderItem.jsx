@@ -2,11 +2,38 @@
 import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from '../../config/firebaseConfig';
-import { Link } from 'react-scroll';
+import Link from "next/link";
 import UrlImage from '../UrlImage';
-
-const HeaderItem = ({items}) => {
+import { useRouter } from "next/router";
+const header_navigation = {
+  'en': {
+    navItem: [
+        { content: "Features" },
+        { content: "Home" },
+        { content: "Blog" },
+        { content: "Contact" },
+        { content: "Services" },
+        { content: "Team" },
+        { content: "Projects" }
+    ]
+  },
+  'vn': {
+     navItem: [
+        { "content": "Tính năng" },
+        { "content": "Trang chủ" },
+        { "content": "Blog" },
+        { "content": "Liên hệ" },
+        { "content": "Dịch vụ" },
+        { "content": "Đội nhóm" },
+        { "content": "Dự án" }
+    ]
+  }
+}
+const HeaderItem = ({ items }) => {
+   const { locale,  asPath } = useRouter();
+  const { navItem   } = header_navigation[locale]
   const [languageOption, setLanguageOption] = useState([]);
+  
   const getProjectData =  () => {
      const projectsRef = collection(db, "languageSection");
 
@@ -26,7 +53,7 @@ const HeaderItem = ({items}) => {
        );
      }
   }
-  console.log("ngonngu", languageOption)
+ 
   useEffect(() => {
    getProjectData()
   }, []);
@@ -34,11 +61,11 @@ const HeaderItem = ({items}) => {
     <>
       <header className="menu__item">
         <ul>
-          {items &&
-            items.map((item) => (
-              <li key={item.id}>
-                <Link activeClass="active" spy={true} to={item.key} offset={-180}>
-                  {item.name}
+          {navItem &&
+            navItem.map((item) => (
+              <li key={item.content}>
+                <Link activeClass="active" spy={true} to={item.key} offset={-180} href=''>
+                  {item.content}
                 </Link>
               </li>
             ))}
@@ -46,10 +73,17 @@ const HeaderItem = ({items}) => {
               {
                 languageOption && 
                 languageOption.map((op) => (
-                  <>
-                    <a href="">{op.name}</a>
-                  <UrlImage src={op.icon} width={35} height={30} />
-                  </>
+                  <Link
+                    activeClassName={op.name === 'Viet Nam' ? 'vn' : 'en'}
+                    href={asPath}
+                    locale={op.name === 'Viet Nam' ? 'vn' : 'en'}>
+                    <div>
+
+                   {op.name}
+                      <UrlImage src={op.icon} width={35} height={30} />
+                    </div>
+                      
+                  </Link>
                 ))
               }
             </li>
