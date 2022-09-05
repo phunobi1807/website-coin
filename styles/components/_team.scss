@@ -1,0 +1,40 @@
+#team {
+  .row {
+    .title {
+      margin-bottom: 60px;
+      h2 {
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 38px;
+        line-height: 1.5;
+        color: #fff;
+        text-align: center;
+      }
+    }
+    .single__team__box {
+      .team__image {
+        img {
+          border-radius: 3px;
+          object-fit: contain;
+        }
+      }
+      .team__info {
+        padding: 20px 0;
+        text-align: center;
+        h3 {
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 0;
+          color: #fff;
+          line-height: 1.5;
+        }
+        span {
+          color: #ff9b08;
+          font-size: 15px;
+          font-weight: 500;
+          display: block;
+        }
+      }
+    }
+  }
+}

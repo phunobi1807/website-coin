@@ -1,0 +1,53 @@
+#services {
+  margin-top: 40px;
+  .row {
+    .title {
+      h2 {
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 38px;
+        line-height: 1.5;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 75px;
+      }
+    }
+    .card {
+      background-color: rgb(70, 58, 255, 0.12);
+      padding: 50px 10px;
+      margin-bottom: 30px;
+
+      .img-services {
+        text-align: center;
+        background-color: initial;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        img {
+          background-color: initial;
+          border: 1px solid #1d1952;
+          padding: 15px;
+          border-radius: 50%;
+          &:hover {
+            background-color: inherit;
+            background: white;
+          }
+        }
+      }
+
+      h3 {
+        background-color: initial;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      p {
+        background-color: initial;
+        text-align: center;
+        font-size: 15px;
+        margin-top: 15px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

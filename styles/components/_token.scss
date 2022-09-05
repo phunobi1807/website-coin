@@ -1,0 +1,58 @@
+#token {
+    padding: 100px 0 !important;
+  .row {
+    .title {
+        margin-bottom: 75px;
+      h2 {
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 38px;
+        line-height: 1.5;
+        color: #fff;
+        text-align: center;
+      }
+    }
+    .token__content {
+      h2 {
+        font-size: 33px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      p {
+        color: #ffffff;
+        font-weight: 500;
+      }
+      ul {
+        padding: 0;
+        line-height: 45px;
+        font-weight: 500;
+        li {
+          span {
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-bottom: -8px;
+          }
+          .color-1 {
+            background: #0fa5fd;
+          }
+          .color-2 {
+            background: #865bf3;
+          }
+          .color-3 {
+            background: #e65356;
+          }
+          .color-4 {
+            background: #e6c253;
+          }
+          .color-5 {
+            background: #00f9a7;
+          }
+        }
+      }
+    }
+  }
+}

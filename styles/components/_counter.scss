@@ -1,0 +1,24 @@
+#counter {
+    margin-bottom: 75px;
+    margin-top: 75px;
+    .single__counter {
+        .counter__contents {
+            text-align: center;
+            & > h2 {
+                color: #fff;
+                font-size: 45px;
+                font-weight: 700;
+                margin-bottom: 5px;
+                word-spacing: -10px;
+                & > .counter__number {
+                    margin-bottom: 0;
+                }
+            }
+            .counter__heading {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+}

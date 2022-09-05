@@ -1,0 +1,37 @@
+.container {
+    .row {
+        .content {
+            text-align: left;
+            padding-top: 230px;
+
+            h1 {
+                font-size: 45px;
+                margin-bottom: 10px;
+                font-weight: 800;
+                line-height: 1.5;
+            }
+            p {
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 26px;
+                letter-spacing: 0.5px;
+            }
+
+            button {
+                text-transform: capitalize;
+                background: #ff9b08;
+                padding: 10px 35px;
+                letter-spacing: 0.3px;
+                font-weight: 700;
+                border-radius: 30px;
+                color: #fff;
+            }
+
+            
+        } 
+           .img {
+             padding-top: 50px !important;
+           }
+
+    }
+}
