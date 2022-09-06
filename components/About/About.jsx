@@ -7,10 +7,14 @@ import { useEffect } from 'react';
 import { collection } from 'firebase/firestore';
 import { onSnapshot } from 'firebase/firestore';
 import { db } from "../../config/firebaseConfig";
+import { useRouter } from "next/router";
+import { AboutTrans } from "../../translations/about";
 import AboutItem from "./AboutItem";
 
 const About = () => {
   const [about, setAbout] = useState([]);
+  const { locale,  asPath } = useRouter();
+  const { title , description , aboutItem } = AboutTrans[locale]
   useEffect(() => {;
     const projectRef = collection(db, "features_section")
     if(!projectRef.empty) {
@@ -37,8 +41,8 @@ const About = () => {
             about.map((item) => (
               <>
                 <div className="col-lg-6 m-auto" key={item.id}>
-                  <h2>{item.title}</h2>
-                  <p className="about_row_content" dangerouslySetInnerHTML={{ __html: item?.description ?? "", }}>
+                  <h2>{title}</h2>
+                  <p className="about_row_content" dangerouslySetInnerHTML={{ __html: description ?? "", }}>
                     {/* {item.description} */}
                   </p>
                   {/* <ul>
@@ -57,7 +61,7 @@ const About = () => {
                     alt="about-img"
                   />
                 </div>
-                <AboutItem listItem = {item.listFeaturestem} />
+                <AboutItem listItem = {item.listFeaturestem} aboutItem={aboutItem} />
               </>
             ))}
         </Row>

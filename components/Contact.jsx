@@ -1,30 +1,34 @@
 import React from "react";
+import { useRouter } from "next/router";
+import { contact } from "../translations/contact";
 import { Container, Row } from "reactstrap";
 
+
 const Contact = () => {
+  const { locale} = useRouter();
+  const { title , subtitle, contact_address, contact_phone, contact_workTime, contact_aus_branch, contact_address_detail, contact_address_aus_detail, form_name, form_email, form_subject, form_message, btn_send  } = contact[locale]
   return (
     <>
       <Container id="contact">
         <Row>
           <div className="col-lg-12 text-center">
             <div className="title">
-              <h2>Contact Us</h2>
+              <h2>{title}</h2>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="contact__us">
-              <h1>Contact With Us</h1>
+              <h1>{subtitle}</h1>
               <div className="contact__address">
                 <h2 className="title__contact__office">THINKTODO:</h2>
                 <p>
-                  Address:
+                 {contact_address}
                   <span aria-disabled="true" className="address">
-                    27 Hoang Hoa Tham street, Binh Thanh district, Ho Chi Minh
-                    city
+                   {contact_address_detail}
                   </span>
                 </p>
                 <p>
-                  Phone:
+                  {contact_phone}
                   <span aria-disabled="true" className="phone">
                     +84 +84908184981
                   </span>
@@ -32,23 +36,22 @@ const Contact = () => {
               </div>
               <div className="box__branch">
                 <h1 className="title-contact-office">
-                  Australia Branch Viet Nam:
+                {contact_aus_branch}
                 </h1>
                 <p>
-                  Working Time:
+                 {contact_workTime}
                   <span aria-disabled="true" className="address">
                     9h00-17h00
                   </span>
                 </p>
                 <p>
-                  Address:
+                 {contact_address}
                   <span aria-disabled="true" className="address">
-                    27 Hoang Hoa Tham street, Binh Thanh district, Ho Chi Minh
-                    city,Việt Nam
+                {contact_address_aus_detail}
                   </span>
                 </p>
                 <p>
-                  Phone:
+                {contact_phone}
                   <span aria-disabled="true" className="phone">
                     +84 +84908184981
                   </span>
@@ -65,7 +68,7 @@ const Contact = () => {
                       id="form_name"
                       type="text"
                       name="name"
-                      placeholder="Your Name"
+                      placeholder={form_name}
                       required="required"
                     ></input>
                   </div>
@@ -74,7 +77,7 @@ const Contact = () => {
                       id="form_email"
                       type="email"
                       name="email"
-                      placeholder="Your Email"
+                      placeholder={form_email}
                       required="required"
                     ></input>
                   </div>
@@ -83,7 +86,7 @@ const Contact = () => {
                       id="form_subject"
                       type="text"
                       name="subject"
-                      placeholder="Your Subject"
+                      placeholder={form_subject}
                       required="required"
                     ></input>
                   </div>
@@ -91,7 +94,7 @@ const Contact = () => {
                     <textarea
                       id="form_message"
                       name="message"
-                      placeholder="Your Message"
+                      placeholder={form_message}
                       rows="4"
                       required="required"
                     ></textarea>
@@ -99,7 +102,7 @@ const Contact = () => {
                   <div className="col-lg-12 text-center">
                     <div className="contact__button">
                       <button type="submit" className="button">
-                        Send Message
+                        {btn_send}
                       </button>
                     </div>
                   </div>

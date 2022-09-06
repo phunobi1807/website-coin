@@ -3,8 +3,12 @@ import { Container, Row } from "reactstrap";
 import CountUp from "react-countup";
 import { collection, onSnapshot, query, queryOneDocumentByLimit, orderBy, limit } from "firebase/firestore";
 import { db } from "../config/firebaseConfig";
+import { counter } from "../translations/counter";
+import { useRouter } from "next/router";
 
 const Counter = () => {
+  const { locale} = useRouter();
+  const {count_item} = counter[locale]
   const [count, setCount] = useState([]);
   useEffect(() => {
     const counterRef = query(
@@ -35,19 +39,19 @@ const Counter = () => {
     <>
       <Container id="counter">
         <Row>
-          {count &&
-            count.map((item) => (
+          {count_item && count &&
+            count_item.map((item, index) => (
               <>
                 <div className="col-lg-3">
-                  <div className="single__counter" key={item.id}>
+                  <div className="single__counter" key={count[index]?.id}>
                     <div className="counter__contents">
                       <h2>
                         <span className="counter__number">
-                          <CountUp start={0} end={item.number} duration={2.75} />
+                          <CountUp start={0} end={count[index]?.number} duration={2.75} />
                         </span>
                         <span>+</span>
                       </h2>
-                      <h3 className="counter__heading">{item.title}</h3>
+                      <h3 className="counter__heading">{item.display}</h3>
                     </div>
                   </div>
                 </div>

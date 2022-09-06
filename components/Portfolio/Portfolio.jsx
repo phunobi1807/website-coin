@@ -9,8 +9,11 @@ import PortfolioItem from "./PortfolioItem";
 import classNames from "classnames";
 import UrlImage from "../UrlImage";
 import { async } from '@firebase/util';
-
+import { porfolio } from "../../translations/porfolio";
+import { useRouter } from "next/router";
 const Portfolio = () => {
+  const { locale } = useRouter();
+  const { title , description, btn_all, btn_website, btn_mobile  } = porfolio[locale]
   const [projectList, setProjectList] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [filter, setFilter] = useState("all");
@@ -64,7 +67,7 @@ const Portfolio = () => {
             }
             onClick={() => [setFilter("all"), handleOnClick(0)]}
           >
-            All
+            {btn_all}
           </button>
           <button
             className={
@@ -74,7 +77,8 @@ const Portfolio = () => {
             }
             onClick={() => [setFilter("website"), handleOnClick(1)]}
           >
-            Website
+           {btn_website}
+
           </button>
           <button
             className={
@@ -84,7 +88,8 @@ const Portfolio = () => {
             }
             onClick={() => [setFilter("mobile"), handleOnClick(2)]}
           >
-            Mobile
+             {btn_mobile}
+
           </button>
           <h1>{projectList.title}</h1>
         </div>
@@ -96,10 +101,9 @@ const Portfolio = () => {
     <>
       <Container id="projects">
         <Row>
-          <h2 className="title">OUR PORTFOLIO</h2>
+          <h2 className="title">{title}</h2>
           <p className="subtitle">
-            We are a small team with great skills. See the faces behind the
-            lines of code.!Let's see our projects.
+           {description}
           </p>
           <ButtonTags />
 

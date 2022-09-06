@@ -2,36 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from '../../config/firebaseConfig';
-import Link from "next/link";
 import UrlImage from '../UrlImage';
+import Link from "next/link";
 import { useRouter } from "next/router";
-const header_navigation = {
-  'en': {
-    navItem: [
-        { content: "Features" },
-        { content: "Home" },
-        { content: "Blog" },
-        { content: "Contact" },
-        { content: "Services" },
-        { content: "Team" },
-        { content: "Projects" }
-    ]
-  },
-  'vn': {
-     navItem: [
-        { "content": "Tính năng" },
-        { "content": "Trang chủ" },
-        { "content": "Blog" },
-        { "content": "Liên hệ" },
-        { "content": "Dịch vụ" },
-        { "content": "Đội nhóm" },
-        { "content": "Dự án" }
-    ]
-  }
-}
+import { header_navigation } from '../../translations/header';
+
 const HeaderItem = ({ items }) => {
    const { locale,  asPath } = useRouter();
-  const { navItem   } = header_navigation[locale]
+  const { navItem , language_options  } = header_navigation[locale]
   const [languageOption, setLanguageOption] = useState([]);
   
   const getProjectData =  () => {
@@ -71,15 +49,15 @@ const HeaderItem = ({ items }) => {
             ))}
             <li>
               {
-                languageOption && 
-                languageOption.map((op) => (
+                language_options && 
+                language_options.map((op) => (
                   <Link
-                    activeClassName={op.name === 'Viet Nam' ? 'vn' : 'en'}
+                    activeClassName={op.type}
                     href={asPath}
-                    locale={op.name === 'Viet Nam' ? 'vn' : 'en'}>
+                    locale={op.type}>
                     <div>
 
-                   {op.name}
+                   {op.display}
                       <UrlImage src={op.icon} width={35} height={30} />
                     </div>
                       

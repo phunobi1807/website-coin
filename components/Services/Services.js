@@ -2,16 +2,16 @@ import React from "react";
 import Image from "next/dist/client/image";
 import UrlImage from "../UrlImage";
 
-const SerViceItem = ({ items }) => {
+const SerViceItem = ({ items, service_item }) => {
   return (
     <>
-      {items &&
-        items.map((item) => (
-          <div className="col-lg-3" key={item.id}>
+      {service_item &&
+        service_item.map((item, index) => (
+          <div className="col-lg-3" key={items[index].id}>
             <div className="card">
               <div className="img-services">
                 <UrlImage
-                  src={item.image}
+                  src={items[index].image}
                   size="100vw"
                   alt="img-services"
                   objectFit="cover"

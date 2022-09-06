@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "reactstrap";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import Image from "next/dist/client/image";
 import { db } from "../../config/firebaseConfig";
 import { collection, onSnapshot } from "firebase/firestore";
 import SerViceItem from "./Services";
-const service = {
-  'en': {
-    title: 'Our Services'
-  },
-  'vn': {
-    title: 'Dịch vụ'
+import { service } from "../../translations/service";
 
-  }
-}
 const Services = () => {
-     const { locale,  asPath } = useRouter();
-  const { title  } = service[locale]
+     const { locale , } = useRouter();
+  const { title ,service_item } = service[locale]
   const [services, setServices] = useState([]);
   useEffect(() => {
     const projectRef = collection(db, "services_section");
@@ -50,7 +42,7 @@ const Services = () => {
           {services &&
             services.map((service, i) => (
               <>
-                <SerViceItem items={service.listServiceItem} />
+                <SerViceItem items={service.listServiceItem} service_item={service_item}/>
               </>
             ))}
         </Row>
